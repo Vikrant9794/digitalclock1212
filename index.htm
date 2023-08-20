@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Varela+Round&display=swap" rel="stylesheet">
+        <style>
+       .digital-clock
+       {
+        background-color: grey;
+        height: auto;
+        text-align: center;
+        margin: auto;
+        margin-top: 50px;
+        padding: 20px;
+        background-color: black;
+        border: 10px solid brown;
+        font-weight: 900;
+        text-transform: capitalize;
+       
+        
+       }
+       .digital-clock .date{
+        font-size: 70px;
+        color: red;
+        font-family: 'Orbitron', sans-serif;
+       
+       }
+
+       .digital-clock .time{
+        font-size: 70px;
+        color: chartreuse;
+        font-size: 200px;
+       }
+       .digital-clock .time .am-pm{
+        color: fuchsia;
+       }
+
+    </style>
+</head>
+<body>
+    <div class="digital-clock">
+        <div class="date">
+            <span id="day-name">--</span>
+            <span id="day">09</span>-
+            <span id="month">July</span>-
+            <span id="year">--</span>
+
+        </div>
+        <div class="time">
+
+            <span id="hours">00</span>:
+            <span id="minutes">00</span>:
+            <span id="seconds">00</span>:
+            <span id="miliseconds">000</span>:
+            <span class="am-pm" id="am-pm">am/pm</span>
+        </div>
+    </div>
+
+    <script>
+        setInterval(function(){
+           
+            var date = new Date();
+           var days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+           var months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+            document.getElementById("day").innerHTML = ("0"+ (date).getDate()).slice(-2);
+            document.getElementById("day-name").innerHTML = days[date.getDay()];
+            document.getElementById("month").innerHTML=months[date.getMonth()];
+            document.getElementById("year").innerHTML=date.getFullYear();
+
+            //get Hourse
+            var hours=(date.getHours()>12)?date.getHours()-12:date.getHours();
+            hours=("0"+hours).slice(-2);
+
+            //get am or pm
+            var ampm=(date.getHours()>=12)?"PM":"AM";
+
+           //set hours
+            document.getElementById("hours").innerHTML=hours;
+            //set minutes
+            document.getElementById("minutes").innerHTML=("0"+date.getMinutes()).slice(-2);
+            // set seconds
+            document.getElementById("seconds").innerHTML=("0"+date.getSeconds()).slice(-2);
+            //set miliseconds
+            document.getElementById("miliseconds").innerHTML=("00"+date.getMilliseconds()).slice(-2);
+            //set AM PM
+            document.getElementById("am-pm").innerHTML=ampm;
+           
+
+
+            
+
+
+        },1);
+    </script>
+</body>
+</html>
